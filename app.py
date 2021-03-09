@@ -10,10 +10,13 @@ import plotly.express as px
 import statsmodels.api as sm
 import datetime
 import config
-
+from rq import Queue
+from worker import conn
+from utils import count_words_at_url
 
 app = dash.Dash(__name__)
-
+q = Queue(connection=conn)
+result = q.enqueue(count_words_at_url, 'http://heroku.com')
 quandl.ApiConfig.api_key = config.quandl_key
 
 
