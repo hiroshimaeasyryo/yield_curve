@@ -57,32 +57,32 @@ us_fig.update_layout(
 
 # JP Yield Data
 
-jgb30 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_30Y")
-jgb20 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_20Y")
-jgb10 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_10Y")
-jgb7 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_7Y")
-jgb5 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_5Y")
-jgb3 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_3Y")
-jgb2 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_2Y")
-jgb1 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_1Y")
-jp_df = pd.concat([jgb1, jgb2, jgb3, jgb5, jgb7, jgb10, jgb20, jgb30], axis=1).dropna()
-jp_df.columns = us_df.index
-jp_df = jp_df.T
+# jgb30 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_30Y")
+# jgb20 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_20Y")
+# jgb10 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_10Y")
+# jgb7 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_7Y")
+# jgb5 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_5Y")
+# jgb3 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_3Y")
+# jgb2 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_2Y")
+# jgb1 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_1Y")
+# jp_df = pd.concat([jgb1, jgb2, jgb3, jgb5, jgb7, jgb10, jgb20, jgb30], axis=1).dropna()
+# jp_df.columns = us_df.index
+# jp_df = jp_df.T
 
-jp_fig = go.Figure(data=[go.Surface(
-    x=jp_df.columns,
-    y=jp_df.index,
-    z=jp_df.values,
-    opacity=0.05)])
-jp_fig.update_layout(
-    title='JP historical yield curve',
-    scene=dict(
-        xaxis_title='year',
-        yaxis_title='term',
-        zaxis_title='US yield[%]'
-    ),
-    height=750,
-)
+# jp_fig = go.Figure(data=[go.Surface(
+#     x=jp_df.columns,
+#     y=jp_df.index,
+#     z=jp_df.values,
+#     opacity=0.05)])
+# jp_fig.update_layout(
+#     title='JP historical yield curve',
+#     scene=dict(
+#         xaxis_title='year',
+#         yaxis_title='term',
+#         zaxis_title='US yield[%]'
+#     ),
+#     height=750,
+# )
 
 app.layout = html.Div(
     children=[
@@ -107,10 +107,10 @@ app.layout = html.Div(
         dcc.Graph(
             id='graph2',
             figure=us_fig),
-        html.H2(children='JP Historical Yield Curve'),
-        dcc.Graph(
-            id='graph3',
-            figure=jp_fig)
+        # html.H2(children='JP Historical Yield Curve'),
+        # dcc.Graph(
+        #     id='graph3',
+        #     figure=jp_fig)
         ]
     )
 
