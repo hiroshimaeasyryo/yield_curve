@@ -16,7 +16,7 @@ from utils import count_words_at_url
 
 app = dash.Dash(__name__)
 q = Queue(connection=conn)
-result = q.enqueue(count_words_at_url, 'http://heroku.com')
+result = q.enqueue(count_words_at_url, 'https://guarded-harbor-46773.herokuapp.com/')
 quandl.ApiConfig.api_key = config.quandl_key
 
 
