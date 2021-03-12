@@ -10,13 +10,13 @@ import plotly.express as px
 import statsmodels.api as sm
 import datetime
 import config
-from rq import Queue
-from worker import conn
-from utils import count_words_at_url
+# from rq import Queue
+# from worker import conn
+# from utils import count_words_at_url
 
 app = dash.Dash(__name__)
-q = Queue(connection=conn)
-result = q.enqueue(count_words_at_url, 'https://guarded-harbor-46773.herokuapp.com/')
+# q = Queue(connection=conn)
+# result = q.enqueue(count_words_at_url, 'https://guarded-harbor-46773.herokuapp.com/')
 quandl.ApiConfig.api_key = config.quandl_key
 
 
@@ -86,11 +86,7 @@ us_fig.update_layout(
 )
 
 
-<<<<<<< HEAD
-# JP Yield Data
-=======
 # # JP Yield Data
->>>>>>> 22f538cce93271d43da3e0cf5f51600db72827cf
 
 # jgb30 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_30Y")
 # jgb20 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_20Y")
@@ -140,13 +136,11 @@ app.layout = html.Div(
                 ),
         dcc.Graph(
             id='graph2',
-<<<<<<< HEAD
-            figure=us_fig),
+        # figure=us_fig),
         # html.H2(children='JP Historical Yield Curve'),
         # dcc.Graph(
         #     id='graph3',
         #     figure=jp_fig)
-=======
             figure={
                 'data':[
                     {'x': kan_daily_cases.index,
@@ -181,9 +175,8 @@ app.layout = html.Div(
         dcc.Graph(
             id='graph4',
             figure=us_fig),
->>>>>>> 22f538cce93271d43da3e0cf5f51600db72827cf
         ]
-    )
+)
 
 server = app.server
 
