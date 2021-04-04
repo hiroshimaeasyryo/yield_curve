@@ -14,17 +14,17 @@ app = dash.Dash(__name__)
 quandl.ApiConfig.api_key = config.quandl_key
 
 # US Yield data
-ust = quandl.get("USTREASURY/YIELD", start_date="2011-01-01")
+ust = quandl.get("USTREASURY/YIELD", start_date="2016-01-01")
 us_df = ust.drop(['1 MO', '2 MO', '3 MO', '6 MO', '2 YR'], axis=1).dropna().T
 
 # JP Yield Data
-jgb30 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_30Y", start_date="2011-01-01")
-jgb20 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_20Y", start_date="2011-01-01")
-jgb10 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_10Y", start_date="2011-01-01")
-jgb7 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_7Y", start_date="2011-01-01")
-jgb5 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_5Y", start_date="2011-01-01")
-jgb3 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_3Y", start_date="2011-01-01")
-jgb1 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_1Y", start_date="2011-01-01")
+jgb30 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_30Y", start_date="2016-01-01")
+jgb20 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_20Y", start_date="2016-01-01")
+jgb10 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_10Y", start_date="2016-01-01")
+jgb7 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_7Y", start_date="2016-01-01")
+jgb5 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_5Y", start_date="2016-01-01")
+jgb3 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_3Y", start_date="2016-01-01")
+jgb1 = quandl.get("MOFJ/INTEREST_RATE_JAPAN_1Y", start_date="2016-01-01")
 jp_df = pd.concat([jgb1,  jgb3, jgb5, jgb7, jgb10, jgb20, jgb30], axis=1).dropna().T
 jp_df.index = us_df.index
 
